@@ -50,7 +50,11 @@ $routes->set404Override();
 // $routes->get('/profile', 'Admin::index', ['filter' => 'role:admin,users']);
 
 //API
+
 $routes->resource('makam');
+$routes->group('api', function ($routes) {
+    $routes->resource('makam');
+});
 /*
  * --------------------------------------------------------------------
  * Additional Routing

@@ -1,23 +1,20 @@
 <?php
 
-namespace App\Controllers;
+namespace App\Controllers\Api;
 
 use CodeIgniter\RESTful\ResourceController;
 use CodeIgniter\API\ResponseTrait;
 use App\Models\MakamModel;
 
-class Makam extends ResourceController
+// use App\Controllers\BaseController;
+
+class ApiMakam extends ResourceController
 {
     protected $format = 'json';
     public function __construct()
     {
         $this->Makam = new MakamModel();
     }
-    /**
-     * Return an array of resource objects, themselves in array format
-     *
-     * @return mixed
-     */
     use ResponseTrait;
     public function index()
     {
@@ -26,12 +23,6 @@ class Makam extends ResourceController
         return $this->respond($dataMakam);
     }
 
-
-    /**
-     * Return the properties of a resource object
-     *
-     * @return mixed
-     */
     public function show($id = null)
     {
         $dataMakam = $this->Makam->find(['id' => $id]);
@@ -39,12 +30,6 @@ class Makam extends ResourceController
         return $this->respond($dataMakam[0]);
     }
 
-
-    /**
-     * Create a new resource object, from "posted" parameters
-     *
-     * @return mixed
-     */
     public function create()
     {
         if (!$this->validate([
@@ -72,16 +57,9 @@ class Makam extends ResourceController
             'status' => 201,
             'messages' => 'Data Disimpan'
         ];
-        return $this->respondCreated($response);
+        return $this->respond($response);
     }
 
-
-
-    /**
-     * Add or update a model resource, from "posted" properties
-     *
-     * @return mixed
-     */
     public function update($id = null)
     {
 
@@ -110,21 +88,29 @@ class Makam extends ResourceController
             'longitude' => $input['longitude'],
         ];
         $makam = $this->Makam->save($data);
-        if (!$makam) return $this->fail('Failed to updated data.', 400);
-        return $this->respond($makam);
+        if (!$makam) {
+            return $this->fail('Failed to updated data.', 400);
+        }
+        $response = [
+            'status' => 201,
+            'error' => null,
+            'messages' => 'Data diupdate.'
+        ];
+        return $this->respond($response);
     }
 
-    /**
-     * Delete the designated resource object from the model
-     *
-     * @return mixed
-     */
     public function delete($id = null)
     {
+        var_dump($id);
+        die;
         $checkID = $this->Makam->find(['id' => $id]);
         if (!$checkID) return $this->fail('Data not found.', 404);
-        $makam = $this->Makam->delete($id);
-        if (!$makam) return $this->fail('Failed to delete data.', 400);
-        return $this->respondDeleted($makam);
+        // $makam = $this->Makam->delete($id);
+        // if (!$makam) return $this->fail('Failed to delete data.', 400);
+        $response = [
+            'status' => 200,
+            'messages' => 'Data berhasil dihapus.'
+        ];
+        return $this->respondDeleted($response);
     }
 }
