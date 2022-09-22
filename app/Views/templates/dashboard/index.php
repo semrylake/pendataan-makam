@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
 
-    <title>Profile</title>
+    <title><?= $title; ?></title>
 
     <meta name="description" content="" />
 
@@ -24,6 +24,7 @@
 
     <script src="<?= base_url(); ?>/assets/sneat/assets/vendor/js/helpers.js"></script>
     <script src="<?= base_url(); ?>/assets/sneat/assets/js/config.js"></script>
+    <link rel="stylesheet" href="<?= base_url(); ?>/assets/datepicker/css/datepicker.css">
 </head>
 
 <body id="body">

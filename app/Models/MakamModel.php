@@ -4,29 +4,10 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-class UserModel extends Model
+class MakamModel extends Model
 {
-    // protected $table = 'users';
-    // protected $useTimestamps = true;
-    // protected $allowedFields = ['name', 'username', 'password', 'rules'];
-    // protected $beforeInsert = ['beforeInsert'];
-    // protected $beforeUpdate = ['beforeUpdate'];
-
-    // protected function beforeInsert(array $data)
-    // {
-    //     $data = $this->passwordHash($data);
-    //     return $data;
-    // }
-    // protected function beforeUpdate(array $data)
-    // {
-    //     $data = $this->passwordHash($data);
-    //     return $data;
-    // }
-    // protected function passwordHash(array $data)
-    // {
-    //     if (!isset($data['data']['password'])) {
-    //         $data['data']['password'] = password_hash($data['data']['password'], PASSWORD_DEFAULT);
-    //     };
-    //     return $data;
-    // }
+    protected $table = 'makam';
+    protected $primaryKey = 'id';
+    protected $useTimestamps = true;
+    protected $allowedFields = ['nama', 'jk', 'tgl_lhr', 'tgl_wafat', 'latitude', 'longitude'];
 }

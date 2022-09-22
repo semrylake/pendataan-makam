@@ -12,14 +12,25 @@
 
     <ul class="menu-inner py-1">
         <!-- Dashboard -->
-        <li class="menu-item">
+        <li class="menu-item <?= ($title == "Dashboard") ? 'active' : ''  ?>">
             <a href="/dashboard" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-home-circle"></i>
                 <div data-i18n="Analytics">Dashboard</div>
             </a>
         </li>
+
+        <?php if (in_groups('admin')) : ?>
+            <li class="menu-header small text-uppercase"><span class="menu-header-text">Users</span></li>
+            <li class="menu-item <?= ($title == "Data Users") ? 'active' : '' ?>">
+                <a href="/user" class="menu-link">
+                    <i class="menu-icon tf-icons bx bx-user"></i>
+                    <div data-i18n="User">Data Users</div>
+                </a>
+            </li>
+        <?php endif; ?>
+
         <li class="menu-header small text-uppercase"><span class="menu-header-text">Makam</span></li>
-        <li class="menu-item">
+        <li class="menu-item <?= ($title == "Makam") ? 'active' : '' ?>">
             <a href="/makam" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-table"></i>
                 <div data-i18n="Tables">Data Makam</div>

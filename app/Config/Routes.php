@@ -35,13 +35,22 @@ $routes->set404Override();
 
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
-$routes->get('/', 'User::index');
-// $routes->get('/login', 'Home::index');
-// $routes->get('/register', 'Home::register');
-$routes->post('/saveAdmin', 'Home::saveAdmin');
-$routes->post('/loginProcess', 'Home::loginProcess');
-$routes->get('/profile', 'Home::profile');
 
+// $routes->get('/', 'Admin::index');
+// $routes->get('/admin/index', 'Admin::index', ['filter' => 'role:admin']);
+// $routes->get('/admin', 'Admin::index', ['filter' => 'role:admin']);
+// $routes->get('/editUser/(:num)', 'User::editUser/$1', ['filter' => 'role:admin']);
+// $routes->get('/user', 'User::index', ['filter' => 'role:admin']);
+// $routes->get('/dashboard', 'Admin::index', ['filter' => 'role:admin,users']);
+
+// //Makam
+// $routes->get('/makam', 'MakamController::index', ['filter' => 'role:admin']);
+// $routes->get('/tambah-makam', 'MakamController::tambah', ['filter' => 'role:admin']);
+
+// $routes->get('/profile', 'Admin::index', ['filter' => 'role:admin,users']);
+
+//API
+$routes->resource('makam');
 /*
  * --------------------------------------------------------------------
  * Additional Routing
