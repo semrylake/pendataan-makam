@@ -51,10 +51,15 @@ $routes->set404Override();
 
 //API
 
-$routes->resource('makam');
-$routes->group('api', function ($routes) {
-    $routes->resource('makam');
-});
+// $routes->get('api/apimakam', 'api\ApiMakam::index');
+// $routes->get('api/apimakam', 'api\ApiMakam::index');
+// $routes->group('api', function ($routes) {
+    //     $routes->resource('apimakam');
+    // });
+    $routes->resource('api/apimakam', ['filter'=>'auth']); //khusus admin
+    $routes->resource('api/register', ['filter'=>'auth']); //register admin
+    $routes->post('api/login', 'api\login::index');
+
 /*
  * --------------------------------------------------------------------
  * Additional Routing

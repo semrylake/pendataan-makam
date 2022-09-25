@@ -6,7 +6,7 @@ use CodeIgniter\RESTful\ResourceController;
 use CodeIgniter\API\ResponseTrait;
 use App\Models\MakamModel;
 
-// use App\Controllers\BaseController;
+use App\Controllers\BaseController;
 
 class ApiMakam extends ResourceController
 {
@@ -15,6 +15,7 @@ class ApiMakam extends ResourceController
     {
         $this->Makam = new MakamModel();
     }
+
     use ResponseTrait;
     public function index()
     {
@@ -62,6 +63,8 @@ class ApiMakam extends ResourceController
 
     public function update($id = null)
     {
+        // $json = $this->request->getJSON();
+        // var_dump($json);die;
 
         if (!$this->validate([
             'nama' => 'required',
@@ -78,6 +81,7 @@ class ApiMakam extends ResourceController
         if (!$checkID) return $this->fail('Data not found.', 404);
 
         $input = $this->request->getRawInput();
+
         $data = [
             'id' => $id,
             'nama' => $input['nama'],
@@ -93,7 +97,6 @@ class ApiMakam extends ResourceController
         }
         $response = [
             'status' => 201,
-            'error' => null,
             'messages' => 'Data diupdate.'
         ];
         return $this->respond($response);
@@ -101,12 +104,11 @@ class ApiMakam extends ResourceController
 
     public function delete($id = null)
     {
-        var_dump($id);
-        die;
+        //
         $checkID = $this->Makam->find(['id' => $id]);
         if (!$checkID) return $this->fail('Data not found.', 404);
-        // $makam = $this->Makam->delete($id);
-        // if (!$makam) return $this->fail('Failed to delete data.', 400);
+        $makam = $this->Makam->delete($id);
+        if (!$makam) return $this->fail('Failed to delete data.', 400);
         $response = [
             'status' => 200,
             'messages' => 'Data berhasil dihapus.'

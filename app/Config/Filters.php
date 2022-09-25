@@ -27,6 +27,7 @@ class Filters extends BaseConfig
         'role'       => \Myth\Auth\Filters\RoleFilter::class,
         'permission' => \Myth\Auth\Filters\PermissionFilter::class,
         'cors' => \App\Filters\Cors::class,
+        'auth' => \App\Filters\Auth::class,
     ];
 
     /**
