@@ -15,6 +15,6 @@ class Admin extends BaseController
         $data = [
             'title' => 'Dashboard'
         ];
-        return view('admin/index', $data);
+        return "RISAL PU BUTIK";
     }
 }

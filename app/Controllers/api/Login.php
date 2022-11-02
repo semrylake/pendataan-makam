@@ -36,10 +36,10 @@ class Login extends ResourceController
 
         $token = getenv('JWT_SECRET');
         $nowTime = time();
-        $exp = $nowTime + (60 * 60);
+        $exp = $nowTime + 3600;
 
         $payload = [
-            'iss' => 'sikamci4',
+            'iss' => 'risalbutik',
             'sub' => 'logintoken',
             'iat' => $nowTime,
             'exp' => $exp,
@@ -48,7 +48,11 @@ class Login extends ResourceController
 
         $token = JWT::encode($payload, $token, 'HS256');
 
-        return $this->respond(['status' => true, 'token' => $token]);
+        return $this->respond([
+            'status' => true, 
+            'token' => $token,
+            'token_exp'=> $exp,
+        ]);
     }
 
     /**
