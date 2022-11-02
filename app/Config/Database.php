@@ -33,9 +33,9 @@ class Database extends Config
     public $default = [
         'DSN'      => '',
         'hostname' => 'localhost',
-        'username' => 'root',
-        'password' => '56964',
-        'database' => 'sikamci',
+        'username' => 'semry',
+        'password' => '12345',
+        'database' => 'risalbutik',
         'DBDriver' => 'MySQLi',
         'DBPrefix' => '',
         'pConnect' => false,
