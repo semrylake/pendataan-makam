@@ -20,7 +20,7 @@
 # APP
 #--------------------------------------------------------------------
 
-app.baseURL = 'http://localhost:8080/'
+ app.baseURL = 'http://localhost:8080/'
 # If you have trouble with `.`, you could also use `_`.
 # app_baseURL = ''
 # app.forceGlobalSecureRequests = false
@@ -39,12 +39,13 @@ app.baseURL = 'http://localhost:8080/'
 # DATABASE
 #--------------------------------------------------------------------
 
-database.default.hostname = localhost
-database.default.database = sikamci
-database.default.username = root
-database.default.password = 56964
-database.default.DBDriver = MySQLi
-database.default.DBPrefix =
+ database.default.hostname = localhost
+ database.default.database = risalbutik
+ database.default.username = semry
+ database.default.password = 12345
+ database.default.DBDriver = MySQLi
+# database.default.DBPrefix =
+
 # database.tests.hostname = localhost
 # database.tests.database = ci4
 # database.tests.username = root
