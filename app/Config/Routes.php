@@ -58,7 +58,7 @@ $routes->set404Override();
     // });
     $routes->resource('api/apimakam', ['filter'=>'auth']); //khusus admin
     $routes->resource('api/register', ['filter'=>'auth']); //register admin
-    $routes->post('api/login', 'api\login::index');
+    $routes->post('api/login', 'api\Login::index');
 
 /*
  * --------------------------------------------------------------------
