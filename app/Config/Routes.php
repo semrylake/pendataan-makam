@@ -60,6 +60,8 @@ $routes->set404Override();
     $routes->resource('api/register', ['filter'=>'auth']); //register admin
     $routes->post('api/login', 'api\Login::index');
 
+    $routes->post('cek', 'Makam::index');
+
 /*
  * --------------------------------------------------------------------
  * Additional Routing

@@ -11,7 +11,7 @@ class Makam extends ResourceController
     protected $format = 'json';
     public function __construct()
     {
-        $this->Makam = new MakamModel();
+        // $this->Makam = new MakamModel();
     }
     /**
      * Return an array of resource objects, themselves in array format
@@ -21,9 +21,30 @@ class Makam extends ResourceController
     use ResponseTrait;
     public function index()
     {
-        $dataMakam = $this->Makam->findAll();
-        if (!$dataMakam) return $this->failNotFound('Data not found');
-        return $this->respond($dataMakam);
+        helper(['form', 'url']);
+        $input = $this->validate([
+            'file' => [
+                'uploaded[file]',
+                'mime_in[file,image/jpg,image/jpeg,image/png]',
+                'max_size[file,200]',
+            ]
+        ]);
+        if (!$input) {
+            var_dump('Choose a valid file');
+        } else {
+            $img = $this->request->getFile('file');
+            $fileName = $img->getRandomName();
+            $data = [
+                'name' =>  $img->getName(),
+                'type'  => $img->getClientMimeType()
+            ];
+            $img->move('uploads/produkImg/', $fileName);
+                   
+            var_dump("Nama File : ".$fileName); 
+        }
+        // $dataMakam = $this->Makam->findAll();
+        // if (!$dataMakam) return $this->failNotFound('Data not found');
+        // return $this->respond($dataMakam);
     }
 
 
